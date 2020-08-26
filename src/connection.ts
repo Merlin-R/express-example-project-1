@@ -11,6 +11,7 @@ export async function connect(): Promise<Connection> {
     synchronize: true,
     host: "localhost",
     database: "example-todo-list",
+    useUnifiedTopology: true,
   }));
 }
 

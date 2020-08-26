@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { createService } from "@propero/easy-api";
 import express from "express";
 import bodyParser from "body-parser";
