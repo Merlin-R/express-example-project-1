@@ -66,7 +66,7 @@ function npmTaskAfterBuild(task, ...args) {
   let instance = undefined;
   let timeout = undefined;
 
-  async function restartCommand() {
+  function startCommand() {
     instance = spawn("npm", ["run", task, ...args], {
       stdio: ["ignore", "inherit", "inherit"],
       shell: true,
@@ -80,7 +80,7 @@ function npmTaskAfterBuild(task, ...args) {
       instance = undefined;
     }
     if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(restartCommand, 1000);
+    timeout = setTimeout(startCommand, 1000);
   }
 
   process.on("beforeExit", () => instance && instance.kill());
