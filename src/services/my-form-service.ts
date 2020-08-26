@@ -25,7 +25,6 @@ export class MyFormService {
   })
   public async onFormPost(@Body() data: MyForm, @Header("content-type") contentType: string): Promise<void> {
     if (!contentType.startsWith("multipart/form-data")) return;
-    console.log(contentType);
     data = plainToClass(MyForm, data);
     await validateOrReject(data);
     console.log(data);
